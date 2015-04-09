@@ -14,7 +14,7 @@ class CartMarshaller extends Marshaller<Cart> {
     Map<?,?> marshal(Cart value) {
         return [
             'id': value.id,
-            'cart-date': value.cartDate
+            'cartDate': value.cartDate
         ]
     }
 

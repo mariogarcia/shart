@@ -15,6 +15,6 @@ abstract class Marshaller<T> {
         [XML, JSON]*.registerObjectMarshaller(clazzToRegister, this.&marshal)
     }
 
-    abstract Map<?,?> marshal(T value)
+    abstract def marshal(T value)
 
 }
