@@ -16,4 +16,13 @@ final class ActivityUtils {
         return (U) from.intent.getSerializableExtra(key)
     }
 
+    static Boolean Try(Closure<Void> action) {
+        try {
+            action()
+            return true
+        } catch (e) {
+            return false
+        }
+    }
+
 }

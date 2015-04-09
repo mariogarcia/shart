@@ -17,6 +17,7 @@ import shart.app.ast.OnOptionsItemSelected
 import shart.app.ast.OptionsMenu
 
 import static shart.app.api.Repositories.from
+import static shart.app.util.ActivityUtils.Try
 import static shart.app.util.ActivityUtils.startActivityWithSerializable
 import static shart.app.util.DateUtils.toRequest
 
@@ -39,18 +40,17 @@ class CartActivity extends ListActivity {
     @OnBackground
     @OnClick(R.id.button_add_new_cart)
     void createNewCart(View view) {
-        Cart cart = null
+        Try(this.&saveCart) ||
+        Try { showMessage(R.string.error_getting_data) }
+     // Try { this } ||
+     // Try { that } ||
+    }
 
-        try {
+    void saveCart() {
+        Cart cart = from(this).carts.createNewCart(new Cart(cartDate: toRequest(new Date())))
+        showMessage(R.string.cart_saved)
 
-            cart = from(this).carts.createNewCart(new Cart(cartDate: toRequest(new Date())))
-            showMessage(R.string.cart_saved)
-
-            startActivityWithSerializable(this, CartItemListActivity, PAYLOAD, cart)
-
-        } catch (Throwable th) {
-            showMessage(R.string.error_getting_data)
-        }
+        startActivityWithSerializable(this, CartItemListActivity, PAYLOAD, cart)
     }
 
     @OnUIThread
