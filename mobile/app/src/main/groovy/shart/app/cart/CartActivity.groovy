@@ -3,26 +3,20 @@ package shart.app.cart
 import android.app.AlertDialog
 import android.app.ListActivity
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import com.arasthel.swissknife.annotations.OnUIThread
 import groovy.transform.CompileStatic
 import shart.app.R
+import shart.app.ast.OptionsMenu
 
 @CompileStatic
+@OptionsMenu(R.menu.menu_cart)
 class CartActivity extends ListActivity {
 
     @Override
     void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.cart_list)
-    }
-
-
-    @Override
-    boolean onCreateOptionsMenu(Menu menu) {
-        menuInflater.inflate(R.menu.menu_cart, menu)
-        return true
     }
 
     @Override
