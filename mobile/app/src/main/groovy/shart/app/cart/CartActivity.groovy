@@ -29,18 +29,18 @@ class CartActivity extends ListActivity {
 
         Button button = (Button) findViewById(R.id.button_add_new_cart)
         button.setOnClickListener { View v ->
-            new AsyncTask<Object,Integer,Cart>() {
-                @Override
-                protected Cart doInBackground(Object[] params) {
+            def task =  [
+                doInBackground : { Object[] params ->
                      return from(thisActivity).carts.createNewCart(new Cart(cartDate: toRequest(new Date())))
-                }
-                @Override
-                protected void onPostExecute(Cart cart) {
+                },
+                onPostExecute : { Cart cart ->
                     Intent intent = new Intent(thisActivity, CartItemListActivity)
                     intent.putExtra('cart', cart)
                     thisActivity.startActivity(intent)
                 }
-            }.execute()
+            ] as AsyncTask<Object,Integer,Cart>
+
+            task.execute()
         }
     }
 
