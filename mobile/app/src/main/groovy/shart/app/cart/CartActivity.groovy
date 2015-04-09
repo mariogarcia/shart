@@ -3,10 +3,10 @@ package shart.app.cart
 import android.app.AlertDialog
 import android.app.ListActivity
 import android.os.Bundle
-import android.view.MenuItem
 import com.arasthel.swissknife.annotations.OnUIThread
 import groovy.transform.CompileStatic
 import shart.app.R
+import shart.app.ast.OnOptionsItemSelected
 import shart.app.ast.OptionsMenu
 
 @CompileStatic
@@ -19,18 +19,8 @@ class CartActivity extends ListActivity {
         setContentView(R.layout.cart_list)
     }
 
-    @Override
-    boolean onOptionsItemSelected(MenuItem item) {
-
-        if (item.getItemId() == R.id.action_about) {
-            showAbout()
-            return true
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
-
     @OnUIThread
+    @OnOptionsItemSelected(R.id.action_about)
     void showAbout() {
         new AlertDialog.Builder(this)
             .setIcon(R.drawable.ic_launcher)
