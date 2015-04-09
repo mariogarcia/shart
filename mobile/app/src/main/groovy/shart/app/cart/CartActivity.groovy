@@ -5,6 +5,7 @@ import android.app.ListActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import com.arasthel.swissknife.SwissKnife
 import com.arasthel.swissknife.annotations.InjectView
 import com.arasthel.swissknife.annotations.OnBackground
@@ -38,12 +39,23 @@ class CartActivity extends ListActivity {
     @OnBackground
     @OnClick(R.id.button_add_new_cart)
     void createNewCart(View view) {
-        Cart cart =
-            from(this)
-            .carts
-            .createNewCart(new Cart(cartDate: toRequest(new Date())))
+        Cart cart = null
 
-        startActivityWithSerializable(this, CartItemListActivity, PAYLOAD, cart)
+        try {
+
+            cart = from(this).carts.createNewCart(new Cart(cartDate: toRequest(new Date())))
+            showMessage(R.string.cart_saved)
+
+            startActivityWithSerializable(this, CartItemListActivity, PAYLOAD, cart)
+
+        } catch (Throwable th) {
+            showMessage(R.string.error_getting_data)
+        }
+    }
+
+    @OnUIThread
+    void showMessage(int messageId) {
+        Toast.makeText(baseContext, messageId, 6).show()
     }
 
     @OnUIThread

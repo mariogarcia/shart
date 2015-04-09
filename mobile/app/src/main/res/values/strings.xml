@@ -9,4 +9,10 @@
     <string name="label_carts">Carts</string>
     <string name="action_add_cart">Add Cart</string>
     <string name="host">http://192.168.1.33:8080</string>
+
+
+    <string name="cart_saved">Cart saved successfully!!!</string>
+    <string name="error_getting_data">Upps sorry try again later</string>
+
+
 </resources>
