@@ -33,7 +33,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="bottom"
-                    android:text="El Corte Ingles"
+                    android:text="Groovysbury"
                     android:textColor="@android:color/white"
                     android:textSize="20dp" />
 
@@ -56,7 +56,7 @@
                 android:layout_weight="1"
                 android:gravity="end|bottom"
                 android:numeric="decimal"
-                android:text="150.23 EUR"
+                android:text="0.00 EUR"
                 android:textColor="@android:color/white"
                 android:textSize="18dp" />
         </LinearLayout>

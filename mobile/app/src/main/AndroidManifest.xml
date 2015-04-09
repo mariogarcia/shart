@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="shart.app" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -20,6 +22,9 @@
             android:label="@string/label_carts"
             android:name=".cart.CartActivity">
         </activity>
+        <activity
+            android:name=".cart.CartItemListActivity"
+            android:parentActivityName=".cart.CartActivity"/>
 
     </application>
 
