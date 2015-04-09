@@ -1,0 +1,5 @@
+include 'app'
+include 'app-profit'
+
+rootProject.name = 'mobile'
+

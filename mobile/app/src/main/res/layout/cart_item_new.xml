@@ -1,0 +1,84 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:rsb="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/cart_item_description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="Description"
+            android:textColor="@color/font_primary"
+            android:textColorHint="@color/font_secondary"
+
+            android:textSize="28sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <EditText
+                android:id="@+id/cart_item_how_many"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:hint="How many"
+                android:numeric="decimal"
+                android:gravity="center"
+                android:textColor="@color/font_primary"
+                android:textColorHint="@color/font_secondary"
+                android:textSize="28sp" />
+
+            <Spinner
+                android:id="@+id/cart_item_unit_type"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:textColor="@color/font_primary"
+                android:textSize="28sp"></Spinner>
+
+            <EditText
+                android:id="@+id/cart_item_unit_price"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:hint="Price"
+                android:gravity="center_vertical|end"
+                android:numeric="decimal"
+                android:textColor="@color/font_primary"
+                android:textColorHint="@color/font_secondary"
+                android:textSize="28sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/cart_item_button_save"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/big_button_height"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/big_button_primary"
+            android:text="Add Item to cart"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/cart_item_button_cancel"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/big_button_height"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/big_button_secondary"
+            android:text="Back to cart"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+</ScrollView>
