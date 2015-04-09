@@ -1,13 +1,15 @@
 package shart.app.cart
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.app.ListActivity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import com.arasthel.swissknife.SwissKnife
+import com.arasthel.swissknife.annotations.InjectView
 import com.arasthel.swissknife.annotations.OnBackground
+import com.arasthel.swissknife.annotations.OnClick
 import com.arasthel.swissknife.annotations.OnUIThread
 import groovy.transform.CompileStatic
 import shart.app.R
@@ -21,17 +23,18 @@ import static shart.app.util.DateUtils.toRequest
 @OptionsMenu(R.menu.menu_cart)
 class CartActivity extends ListActivity {
 
+    @InjectView(R.id.button_add_new_cart)
+    Button createNewCartButton
+
     @Override
     void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.cart_list)
-        final Activity thisActivity = this
-
-        Button button = (Button) findViewById(R.id.button_add_new_cart)
-        button.setOnClickListener(this.&createNewCart)
+        SwissKnife.inject(this)
     }
 
     @OnBackground
+    @OnClick(R.id.button_add_new_cart)
     void createNewCart(View view) {
         Cart cart =
             from(this)
