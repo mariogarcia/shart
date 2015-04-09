@@ -2,7 +2,6 @@ package shart.app.cart
 
 import android.app.AlertDialog
 import android.app.ListActivity
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -17,11 +16,14 @@ import shart.app.ast.OnOptionsItemSelected
 import shart.app.ast.OptionsMenu
 
 import static shart.app.api.Repositories.from
+import static shart.app.util.ActivityUtils.startActivityWithSerializable
 import static shart.app.util.DateUtils.toRequest
 
 @CompileStatic
 @OptionsMenu(R.menu.menu_cart)
 class CartActivity extends ListActivity {
+
+    static final String PAYLOAD = 'cart'
 
     @InjectView(R.id.button_add_new_cart)
     Button createNewCartButton
@@ -41,10 +43,7 @@ class CartActivity extends ListActivity {
             .carts
             .createNewCart(new Cart(cartDate: toRequest(new Date())))
 
-        Intent intent = new Intent(this, CartItemListActivity)
-        intent.putExtra('cart', cart)
-
-        startActivity(intent)
+        startActivityWithSerializable(this, CartItemListActivity, PAYLOAD, cart)
     }
 
     @OnUIThread

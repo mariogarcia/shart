@@ -8,18 +8,17 @@ import com.arasthel.swissknife.annotations.OnUIThread
 import groovy.transform.CompileStatic
 import shart.app.R
 
-import static shart.app.util.DateUtils.fromResponse
+import static shart.app.util.ActivityUtils.getExtraSerializable
 
 @CompileStatic
 class CartItemListActivity extends ListActivity {
     @Override
     void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState)
-
-        Cart cart = (Cart) intent.getSerializableExtra('cart')
-
-        loadCartInfo(cart)
         setContentView(R.layout.cart_item_list)
+
+        Cart cart = getExtraSerializable(this, Cart, CartActivity.PAYLOAD)
+        loadCartInfo(cart)
     }
 
     @OnBackground
