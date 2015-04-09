@@ -11,11 +11,11 @@ import android.widget.Button
 import com.arasthel.swissknife.annotations.OnUIThread
 import groovy.transform.CompileStatic
 import shart.app.R
-import shart.app.api.Repositories
 import shart.app.ast.OnOptionsItemSelected
 import shart.app.ast.OptionsMenu
 
-import static shart.app.util.DateUtils.*
+import static shart.app.api.Repositories.from
+import static shart.app.util.DateUtils.toRequest
 
 @CompileStatic
 @OptionsMenu(R.menu.menu_cart)
@@ -28,23 +28,20 @@ class CartActivity extends ListActivity {
         final Activity thisActivity = this
 
         Button button = (Button) findViewById(R.id.button_add_new_cart)
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            void onClick(View v) {
-                new AsyncTask<Object,Integer,Cart>() {
-                    @Override
-                    protected Cart doInBackground(Object[] params) {
-                         return Repositories.getCartService(thisActivity).createNewCart(new Cart(cartDate: toRequest(new Date())))
-                    }
-                    @Override
-                    protected void onPostExecute(Cart cart) {
-                        Intent intent = new Intent(thisActivity, CartItemListActivity)
-                        intent.putExtra('cart', cart)
-                        thisActivity.startActivity(intent)
-                    }
-                }.execute()
-            }
-        })
+        button.setOnClickListener { View v ->
+            new AsyncTask<Object,Integer,Cart>() {
+                @Override
+                protected Cart doInBackground(Object[] params) {
+                     return from(thisActivity).carts.createNewCart(new Cart(cartDate: toRequest(new Date())))
+                }
+                @Override
+                protected void onPostExecute(Cart cart) {
+                    Intent intent = new Intent(thisActivity, CartItemListActivity)
+                    intent.putExtra('cart', cart)
+                    thisActivity.startActivity(intent)
+                }
+            }.execute()
+        }
     }
 
     @OnUIThread
