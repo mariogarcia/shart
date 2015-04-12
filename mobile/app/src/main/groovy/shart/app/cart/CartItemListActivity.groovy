@@ -8,7 +8,7 @@ import com.arasthel.swissknife.annotations.OnUIThread
 import groovy.transform.CompileStatic
 import shart.app.R
 
-import static shart.app.util.ActivityUtils.getExtraSerializable
+import static shart.app.ext.Activities.getExtraSerializable
 
 @CompileStatic
 class CartItemListActivity extends ListActivity {

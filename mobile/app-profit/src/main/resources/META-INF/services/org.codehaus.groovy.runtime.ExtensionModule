@@ -1,0 +1,3 @@
+moduleName=app-profit
+moduleVersion=1.0
+extensionClasses=shart.app.ext.Widgets,shart.app.ext.Activities
