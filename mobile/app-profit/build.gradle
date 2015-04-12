@@ -49,15 +49,12 @@ dependencies {
     compile 'com.android.support:support-v4:21.0.0'
     // Groovy version
     compile 'org.codehaus.groovy:groovy:2.4.0:grooid'
-    // Groovy Json handling
-    compile ('org.codehaus.groovy:groovy-json:2.4.0-rc-1') {
-        transitive = false
-    }
-
     // Rest handling
     compile 'com.squareup.retrofit:retrofit:1.7.1'
     // Getting rid of boiler plate code
-    compile 'com.arasthel:swissknife:1.1.4'
+    compile 'com.arasthel:swissknife:1.2.2'
     // Imaging
     compile 'com.squareup.picasso:picasso:2.3.2'
+    //Event Bus
+    compile 'de.greenrobot:eventbus:2.4.0'
 }
