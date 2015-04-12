@@ -24,6 +24,12 @@ android {
         versionName "1.0"
     }
 
+    // Cant use two libraries with extensions at the same time.
+    // Will be a way of doing this soon
+    packagingOptions {
+        pickFirst 'META-INF/services/org.codehaus.groovy.runtime.ExtensionModule'
+    }
+
     lintOptions {
         abortOnError false
     }
