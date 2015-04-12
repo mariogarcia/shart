@@ -13,6 +13,7 @@ import com.arasthel.swissknife.annotations.OnClick
 import com.arasthel.swissknife.annotations.OnUIThread
 import groovy.transform.CompileStatic
 import shart.app.R
+import shart.app.ast.ContentView
 import shart.app.ast.OnOptionsItemSelected
 import shart.app.ast.OptionsMenu
 
@@ -23,27 +24,16 @@ import static shart.app.util.DateUtils.toRequest
 
 @CompileStatic
 @OptionsMenu(R.menu.menu_cart)
+@ContentView(R.layout.cart_list)
 class CartActivity extends ListActivity {
 
     static final String PAYLOAD = 'cart'
-
-    @InjectView(R.id.button_add_new_cart)
-    Button createNewCartButton
-
-    @Override
-    void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.cart_list)
-        SwissKnife.inject(this)
-    }
 
     @OnBackground
     @OnClick(R.id.button_add_new_cart)
     void createNewCart(View view) {
         Try(this.&saveCart) ||
         Try { showMessage(R.string.error_getting_data) }
-     // Try { this } ||
-     // Try { that } ||
     }
 
     void saveCart() {
